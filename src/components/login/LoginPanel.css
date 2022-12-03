@@ -1,0 +1,52 @@
+.login-wrapper {
+    display: grid;
+    grid-template-areas: "email" "password";
+    justify-content: center;
+    margin: 15% 5% 5%;
+    font-family: 'Montserrat', sans-serif;
+}
+.background-wrapper {
+    background-color: #869499;
+    border-radius: 10px;
+    padding: 20px;
+    scale: 130%;
+}
+.email-wrapper {
+    display: grid;
+    grid-area: email;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+.password-wrapper {
+    display: grid;
+    grid-area: password;
+    padding-bottom: 2%;
+}
+.login-button-wrapper {
+    background-color: #334756;
+    border-radius: 10px;
+    width: 17rem;
+    border: solid 1px transparent;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    font-weight: 300;
+    transition: all 0.4s ease-in-out;
+    margin: 8px 0 8px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.register-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+.register-link:visited {
+    color: #282c34;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

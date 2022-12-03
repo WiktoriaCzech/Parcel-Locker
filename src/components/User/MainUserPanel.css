@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.site-wrapper {
+    display: grid;
+    background-color: #869499;
+    grid-template-areas: "main" "footer";
+    height: 100vh;
+}
+.content {
+    grid-area: main;
+    display: flex;
+    height: 96vh;
+}
+.left-side-wrapper {
+    float: left;
+    flex-basis: 40%;
+
+}
+.right-main-side-wrapper {
+    display: grid;
+    padding-top: 10px;
+    float: right;
+    flex-basis: 60%;
+    grid-template-areas: "logout" "buttons" "package-list" ;
+    grid-template-rows: 0.3fr 0.8fr 4fr;
+}
+.logout-button-wrapper {
+    grid-area: logout;
+    height: 40px;
+}
+.logout-button {
+    margin: 4px 15px 0 0;
+    float: right;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    background-color: #334441;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    width: 14vh;
+    height: 4vh;
+    cursor: pointer;
+
+}
+.footer {
+    grid-area: footer;
+    background-color: #869499;
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    color: #282c34;
+    font-style: italic;
+}
+.logo {
+    display: flex;
+}
+.logo-img {
+    width: 90px;
+    height: 90px;
+}
+.logo-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 20px;
+}
+.main-content {
+    display: flex;
+    align-items: center;
+}
+.P {
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    margin-top: -100px;
+
+}
+.top-button-content {
+    grid-area: buttons;
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    height: 50px;
+
+}
+.top-button-content .Odbior{
+    border-radius: 8px;
+    padding: 14px 60px;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #282c34;
+    scale: 1.2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+.Odbior:hover {
+    background-color: #334441;
+}
+.top-button-content .Nadanie{
+    border-radius: 8px;
+    padding: 14px 68px;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #282c34;
+    scale: 1.2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+.Nadanie:hover {
+    background-color: #334441;
+}
+.bottom-info-content{
+    grid-area: package-list;
+}
+.send-panel {
+    display: none;
+}
+.send-panel.active {
+    display: flex;
+}
+.recieve-panel {
+    display: none;
+}
+.recieve-panel.active {
+    display: flex;
+}
+/*@media all and (max-width: 1000px){*/
+/*    .top-button-content .Odbior{*/
+/*        border-radius: 8px;*/
+/*        padding: 14px 40px;*/
+/*        font-size: 20px;*/
+/*        text-align: center;*/
+/*        border: none;*/
+/*        color: #fff;*/
+/*        text-decoration: none;*/
+/*        display: inline-block;*/
+/*        background-color: #282c34;*/
+/*        margin: 10px;*/
+/*    }*/
+/*    .P {*/
+/*        padding-top: 40px;*/
+/*        width: 100%;*/
+/*        height: 100%;*/
+/*        margin-top: -70px;*/
+/*    }*/
+/*}*/
