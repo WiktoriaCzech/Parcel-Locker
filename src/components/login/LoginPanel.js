@@ -48,12 +48,12 @@ const Login = () => {
         }
     }
     return(
-            <div className="login-wrapper">
+        <div className="login-wrapper">
             <div className="background-wrapper">
-                <h1 style={{fontSize: "22px"}}>Zaloguj się :)</h1>
+                <h1 style={{fontSize: "22px",color: "#fff",fontWeight: "400"}}>Zaloguj się :)</h1>
                 <form>
                     <label className="email-wrapper">
-                        <span>Email</span>
+                        <span style={{color: "#95a5a9"}}>Email</span>
                         <input
                             type="text"
                             placeholder="example.username@gmail.com"
@@ -62,7 +62,7 @@ const Login = () => {
                         />
                     </label>
                     <label className="password-wrapper">
-                        <span>Hasło</span>
+                        <span style={{color: "#95a5a9"}}>Hasło</span>
                         <input
                             type="password"
                             placeholder="password"
@@ -80,7 +80,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px"}}>Brak konta?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9"}}>Brak konta?</h1>
                 <Link to="/register" className="register-link">Zarejestruj się tutaj</Link>
             </div>
         </div>
