@@ -57,8 +57,11 @@
     color: #282c34;
     font-style: italic;
 }
-.logo {
+.logo-at-left-side {
     display: flex;
+}
+.logo-at-right-side {
+    display: none;
 }
 .logo-img {
     width: 90px;
@@ -140,23 +143,145 @@
 .recieve-panel.active {
     display: flex;
 }
-/*@media all and (max-width: 1000px){*/
-/*    .top-button-content .Odbior{*/
-/*        border-radius: 8px;*/
-/*        padding: 14px 40px;*/
-/*        font-size: 20px;*/
-/*        text-align: center;*/
-/*        border: none;*/
-/*        color: #fff;*/
-/*        text-decoration: none;*/
-/*        display: inline-block;*/
-/*        background-color: #282c34;*/
-/*        margin: 10px;*/
-/*    }*/
-/*    .P {*/
-/*        padding-top: 40px;*/
-/*        width: 100%;*/
-/*        height: 100%;*/
-/*        margin-top: -70px;*/
-/*    }*/
-/*}*/
+@media all and (max-width: 1000px){
+    .top-button-content .Odbior{
+        border-radius: 8px;
+        padding: 14px 40px;
+        font-size: 15px;
+        text-align: center;
+        border: none;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        background-color: #282c34;
+        scale: 1.0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .top-button-content .Nadanie{
+        border-radius: 8px;
+        padding: 14px 48px;
+        font-size: 15px;
+        text-align: center;
+        border: none;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        background-color: #282c34;
+        scale: 1.0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .Nadanie:hover {
+        background-color: #334441;
+    }
+    .Odbior:hover {
+        background-color: #334441;
+    }
+    .P {
+        padding-top: 40px;
+        width: 100%;
+        height: 100%;
+        margin-top: -70px;
+    }
+    @media all and (max-width: 825px){
+        .logo-img {
+            width: 70px;
+            height: 70px;
+        }
+        .logo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        .P {
+            padding-top: 60px;
+            width: 100%;
+            height: 100%;
+            margin-top: -70px;
+        }
+        .logout-button {
+            margin: 4px 15px 0 0;
+            float: right;
+            border-radius: 5px;
+            text-align: center;
+            border: none;
+            color: #fff;
+            text-decoration: none;
+            background-color: #334441;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            width: 10vh;
+            height: 3vh;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        @media all and (max-width: 630px) {
+            .left-side-wrapper {
+                display: none;
+            }
+            .logo-at-left-side {
+                display: none;
+            }
+            .logo-at-right-side {
+                display: flex;
+            }
+            .right-main-side-wrapper {
+                flex-basis: 100%;
+            }
+            .logout-button {
+                margin: 4px 15px 0 0;
+                float: right;
+                border-radius: 5px;
+                text-align: center;
+                border: none;
+                color: #fff;
+                text-decoration: none;
+                background-color: #334441;
+                font-weight: 500;
+                font-family: 'Montserrat', sans-serif;
+                width: 14vh;
+                height: 4vh;
+                cursor: pointer;
+
+            }
+            .logout-button-wrapper {
+                grid-area: logout;
+                height: 60px;
+            }
+            .footer {
+                grid-area: footer;
+                background-color: #869499;
+                width: 100%;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 100;
+                font-size: 10px;
+                color: #282c34;
+                font-style: italic;
+            }
+            @media all and (max-width: 400px) {
+                .logout-button {
+                    margin: 4px 15px 0 0;
+                    float: right;
+                    border-radius: 5px;
+                    text-align: center;
+                    border: none;
+                    color: #fff;
+                    text-decoration: none;
+                    background-color: #334441;
+                    font-weight: 500;
+                    font-family: 'Montserrat', sans-serif;
+                    width: 10vh;
+                    height: 3vh;
+                    cursor: pointer;
+                    font-size: 12px;
+                }
+            }
+
+        }
+    }
+}

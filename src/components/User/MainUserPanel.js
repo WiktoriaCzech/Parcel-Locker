@@ -35,13 +35,18 @@ function MainUserPanel () {
             setRecievePanel(true);
         }
     }
-
+    const handleLogout = () => {
+        localStorage.removeItem('user-info');
+        return (
+            window.location="/login"
+        )
+    }
 
     return (
         <div className="site-wrapper">
             <div className="content">
                 <div className="left-side-wrapper">
-                    <div className="logo" >
+                    <div className="logo-at-left-side" >
                         <img src={logo} alt="Logo firmy" className="logo-img"/>
                         <h1 className="logo-title">Paczkuś sp. z.o.o</h1>
                     </div>
@@ -51,7 +56,11 @@ function MainUserPanel () {
                 </div>
                 <div className="right-main-side-wrapper">
                     <div className="logout-button-wrapper">
-                        <button className="logout-button" type="primary">Wyloguj się</button>
+                        <button className="logout-button" type="primary" onClick={handleLogout}>Wyloguj się</button>
+                        <div className="logo-at-right-side" >
+                            <img src={logo} alt="Logo firmy" className="logo-img"/>
+                            <h1 className="logo-title">Paczkuś sp. z.o.o</h1>
+                        </div>
                     </div>
                     <div className="top-button-content">
                         <button className="Odbior" type="primary" onClick={showRecievePanel}>Odbieram</button>

@@ -8,6 +8,7 @@ import MainAdminPanel from "./components/admin/MainAdminPanel";
 import MainUserPanel from "./components/User/MainUserPanel";
 import LoginPanel from "./components/login/LoginPanel";
 import RegisterPanel from "./components/login/RegisterPanel";
+import RedirectPanel from "./RedirectPanel";
 
 const router = createBrowserRouter( [
     {
@@ -26,7 +27,12 @@ const router = createBrowserRouter( [
         path: "register",
         element: <RegisterPanel />
     },
-]);
+    {
+        path: '*',
+        element: <RedirectPanel />
+
+    }
+],);
 
 createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />

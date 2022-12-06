@@ -2,29 +2,29 @@ import {useState, useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import './LoginPanel.css';
 const Login = () => {
-    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
-            navigate('/');
+            navigate('/home-user');
         }
     }, []);
 
     async function login() {
-        if (email.length >= 5 && email.includes('@')) {
+        if (phoneNumber.length === 9) {
             if (password.length >= 5) {
-                const item = { email, password };
+                const userData = { phoneNumber, password };
                 const result = await fetch(
-                    '',
+                    'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/users',
                     {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             Accept: 'application/json',
                         },
-                        body: JSON.stringify(item),
+                        body: JSON.stringify(userData),
                     }
                 );
                 const result2 = await result.json();
@@ -42,9 +42,7 @@ const Login = () => {
                 alert('Hasło musi zawierać co najmniej 5 znaków!');
             }
         } else {
-            alert(
-                'Email musi zawierać co najmniej 5 znaków, musi ponadto zawierać znak @.'
-            );
+            alert('Podaj numer telefonu');
         }
     }
     return(
@@ -53,16 +51,16 @@ const Login = () => {
                 <h1 style={{fontSize: "22px",color: "#fff",fontWeight: "400"}}>Zaloguj się :)</h1>
                 <form>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9"}}>Email</span>
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Numer telefonu</span>
                         <input
                             type="text"
-                            placeholder="example.username@gmail.com"
-                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="123 456 789"
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
                         />
                     </label>
                     <label className="password-wrapper">
-                        <span style={{color: "#95a5a9"}}>Hasło</span>
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Hasło</span>
                         <input
                             type="password"
                             placeholder="password"
@@ -80,7 +78,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9"}}>Brak konta?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9"}}>Brak konta ?</h1>
                 <Link to="/register" className="register-link">Zarejestruj się tutaj</Link>
             </div>
         </div>
