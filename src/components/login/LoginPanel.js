@@ -26,11 +26,15 @@ const Login = () => {
                 const result2 = await result.json();
                 console.log(result2);
                 if(result.status === 200) {
-                    navigate('/home-user');
-                }else
+                    if(result2.accountType === "user")
+                        navigate('/home-user');
+                    else{
+                        navigate('/home-admin');
+                    }
+                }else {
                     navigate('/login');
-                alert("Niepoprawne dane logowania :(")
-
+                    alert("Niepoprawne dane logowania :(")
+                }
             } else {
                 alert('Hasło musi zawierać co najmniej 5 znaków!');
             }
