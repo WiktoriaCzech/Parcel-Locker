@@ -6,28 +6,43 @@ import './LoginPanel.css';
 function RegisterPanel() {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] =useState('');
+    const [surname, setSurname] =useState('');
+
     const navigate = useNavigate();
 
-    async function register() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
 
+    async function register() {
         if (phone.length === 9) {
             if (password.length >= 5) {
-                let result = await fetch(
-                    'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/login',
+                const result = await fetch(
+                    'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/user',
                     {
                         method: 'POST',
-                        body: JSON.stringify({phone, password}),
+                        body: JSON.stringify({phone, name, surname, password}),
                         headers: {
                             'Content-Type': 'application/json',
                             Accept: 'application/json',
                         },
                     }
                 );
-                result = await result.json();
-                if(result.status === 200) {
+                const result2 = await result.json();
+                console.log(result2);
+                if(result.status === 201) {
+                    alert("Pomyślnie zarejestrowano")
                     navigate('/login');
-                }else
-                    alert("Proszę sprawdzić poprawność danych");
+                }else {
+                    if (result.status === 400) {
+                        alert("Proszę sprawdzić poprawność danych!");
+                    }else{
+                        if( result.status === 409) {
+                        alert("Użytkownik o podanym numerze telefonu już istnieje!");
+                        }
+                    }
+                }
             }
             else {
                 alert('Hasło musi zawierać co najmniej 5 znaków!');
@@ -42,20 +57,42 @@ function RegisterPanel() {
         <div className="login-wrapper">
             <div className="background-wrapper">
                 <h1 style={{fontSize: "22px",color: "#fff",fontWeight: "400"}}>Rejestracja</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Numer telefonu</span>
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Imie*</span>
+                        <input
+                            type="text"
+                            value={name}
+                            placeholder="Jan"
+                            onChange={(e) => setName(e.target.value)}
+                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
+                            required
+                        />
+                    </label>
+                    <label className="email-wrapper">
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Nazwisko*</span>
+                        <input
+                            type="text"
+                            value={surname}
+                            placeholder="Kowalski"
+                            onChange={(e) => setSurname(e.target.value)}
+                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
+                            required
+                        />
+                    </label>
+                    <label className="email-wrapper">
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Numer telefonu*</span>
                         <input
                             type="text"
                             value={phone}
-                            placeholder="ex.123 456 789"
+                            placeholder="123 456 789"
                             onChange={(e) => setPhone(e.target.value)}
                             style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
                             required
                         />
                     </label>
                     <label className="password-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Hasło</span>
+                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Hasło*</span>
                         <input
                             type="password"
                             value={password}
