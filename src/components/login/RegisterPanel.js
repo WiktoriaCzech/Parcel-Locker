@@ -29,8 +29,8 @@ function RegisterPanel() {
                         },
                     }
                 );
-                const result2 = await result.json();
-                console.log(result2);
+                // const result2 = await result.json();
+                // console.log(result2);
                 if(result.status === 201) {
                     alert("Pomyślnie zarejestrowano")
                     navigate('/login');

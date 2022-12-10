@@ -24,7 +24,7 @@ const Login = () => {
                         body: JSON.stringify({phone, password}),
                     });
                 const result2 = await result.json();
-                console.log(result2);
+                // console.log(result2);
                 if(result.status === 200) {
                     if(result2.accountType === "user")
                         navigate('/home-user');
