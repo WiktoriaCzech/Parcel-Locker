@@ -9,6 +9,7 @@ import MainUserPanel from "./components/User/MainUserPanel";
 import LoginPanel from "./components/login/LoginPanel";
 import RegisterPanel from "./components/login/RegisterPanel";
 import RedirectPanel from "./RedirectPanel";
+import MainDeliverPanel from "./components/deliver/MainDeliverPanel";
 
 const router = createBrowserRouter( [
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter( [
     {
         path: "register",
         element: <RegisterPanel />
+    },
+    {
+        path: "home-delivery",
+        element: <MainDeliverPanel />
     },
     {
         path: '*',

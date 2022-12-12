@@ -29,7 +29,11 @@ const Login = () => {
                     if(result2.accountType === "user")
                         navigate('/home-user');
                     else{
-                        navigate('/home-admin');
+                        if(result2.accountType === "admin")
+                            navigate('/home-admin');
+                        else{
+                            navigate('/home-delivery');
+                        }
                     }
                 }else {
                     navigate('/login');
