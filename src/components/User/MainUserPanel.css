@@ -39,7 +39,7 @@
     color: #fff;
     text-decoration: none;
     background-color: #334441;
-    font-weight: 500;
+    font-weight: 400;
     font-family: 'Montserrat', sans-serif;
     width: 14vh;
     height: 4vh;
@@ -54,7 +54,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
     font-size: 12px;
-    color: #282c34;
+    color: #373c46;
     font-style: italic;
 }
 .logo-at-left-side {
@@ -69,7 +69,7 @@
 }
 .logo-title {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 30px;
     margin-top: 20px;
 }
@@ -104,7 +104,7 @@
     background-color: #282c34;
     scale: 1.2;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
 }
 .Odbior:hover {
@@ -122,7 +122,7 @@
     background-color: #282c34;
     scale: 1.2;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
 }
 .Nadanie:hover {
@@ -130,6 +130,7 @@
 }
 .bottom-info-content{
     grid-area: package-list;
+    margin-top: -30px;
 }
 .send-panel {
     display: none;
@@ -142,6 +143,8 @@
 }
 .recieve-panel.active {
     display: flex;
+    max-height: 650px;
+    overflow-y: auto;
 }
 @media all and (max-width: 1000px){
     .top-button-content .Odbior{

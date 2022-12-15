@@ -1,4 +1,4 @@
-import sendImg from "../img/template2.png"
+import sendImg from "../img/template1.png"
 import "./sendData.css";
 
 function SendPanel () {
