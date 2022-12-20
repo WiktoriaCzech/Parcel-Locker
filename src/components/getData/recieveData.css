@@ -65,10 +65,8 @@
 }
 .postform {
     font-family: 'Montserrat', sans-serif;
-    height: 30px;
-    margin: 15px 0;
+    margin: 15px 15px 15px 0;;
     padding: 0 5px;
-    margin-right: 15px;
     color: rgba(255,255,255,0.7);
     background-color: #606D5D;
     border-radius: 5px;
