@@ -112,7 +112,7 @@ function RegisterPanel() {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9"}}>Posiadasz jednak konto ?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9", fontFamily: "Montserrat", fontWeight: "400"}}>Posiadasz jednak konto ?</h1>
                 <Link to="/login" className="register-link">Zaloguj się tutaj</Link>
             </div>
         </div>

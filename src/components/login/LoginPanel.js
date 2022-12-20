@@ -1,6 +1,12 @@
 import {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import './LoginPanel.css';
+
+window.userInfo = {
+    phone: "",
+    accountType: "",
+}
+
 const Login = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -25,6 +31,8 @@ const Login = () => {
                     });
                 const result2 = await result.json();
                 // console.log(result2);
+                window.userInfo = result2;
+                 // console.log(userInfo); // TEST CZY PRZEKAZYWANE DANE MOZNA GLOBALNIE PRZENIESC DO INNEGO PLIKU
                 if(result.status === 200) {
                     if(result2.accountType === "user")
                         navigate('/home-user');
@@ -46,6 +54,7 @@ const Login = () => {
             alert('Podaj numer telefonu');
         }
     }
+
     return(
         <div className="login-wrapper">
             <div className="background-wrapper">
@@ -79,7 +88,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9"}}>Brak konta ?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9", fontFamily: "Montserrat", fontWeight: "400"}}>Brak konta ?</h1>
                 <Link to="/register" className="register-link">Zarejestruj się tutaj</Link>
             </div>
         </div>

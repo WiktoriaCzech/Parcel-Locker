@@ -3,18 +3,18 @@
     flex-direction: row;
     justify-content: space-between;
     /*border: 1px solid var(--primary-color);*/
-    background-color: rgba(255,255,255, 0.05);
+    background-color: rgba(255,255,255, 0.08);
     padding: 1rem 0.7rem;
     margin: 13px 10px;
     position: relative;
     border-radius: 8px;
     width: 48vw;
-
 }
 .package-list-container {
     width: 56vw;
     margin-left: 20px;
-    background-color: #334756;
+    background-color: #AA968A;
+    min-height: 260px;
     border-radius: 18px;
     padding-bottom: 1px;
     overflow-y: auto;
@@ -23,25 +23,26 @@
     font-weight: 400;
     text-align: center;
     font-size: larger;
+    color: rgba(0,0,0,0.65);
 
 }
 .card_status {
     font-weight: 400;
     text-align: center;
     font-size: larger;
-
+    color: rgba(0,0,0,0.65);
 }
 .card_kod {
     font-weight: 400;
     text-align: center;
     font-size: larger;
-
+    color: rgba(0,0,0,0.65);
 }
 .card_paczkomat {
     font-weight: 400;
     text-align: center;
     font-size: larger;
-
+    color: rgba(0,0,0,0.65);
 }
 .s {
     font-family: 'Montserrat', sans-serif;
