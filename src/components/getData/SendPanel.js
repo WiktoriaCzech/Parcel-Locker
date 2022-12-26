@@ -4,7 +4,6 @@ import "./recieveData.css";
 import {useState, useEffect} from "react";
 import Card from "./Card";
 import boxImg from"../img/paczka.png";
-import recieveImg from "../img/template2.png";
 
 const { getData } = require("./db/db");
 const packageList = getData();
@@ -13,6 +12,8 @@ function SendPanel () {
 
     const [switchPanel,setSwitchPanel] = useState(true); //switch button state
     const [sendData, setSendData] = useState([]); //get req to display list
+
+    let count = 0;
 
     //POST form request
     const [senderUser, setSenderUser] = useState('');
@@ -52,6 +53,7 @@ function SendPanel () {
         console.log(data);
         // console.log(window.userInfo.phone);
     }
+
     useEffect(() => {
         fetchSendData();
     },[]);
@@ -68,7 +70,14 @@ function SendPanel () {
         element.value = valueToSelect;
         setReceiverMachine (element.value);
     }
-
+    function counter() {
+        count=count+1;
+        return(
+            <>
+                <h4 className="order">{count}</h4>
+            </>
+        )
+    }
     return (
         <div className="send-site-wrapper">
             {
@@ -173,7 +182,7 @@ function SendPanel () {
                                         packageList.map((data) => {
                                             return (
                                                 <div className="recieve-single-item">
-                                                    <h4 className="order">{Object.keys(data).length}</h4>
+                                                    <h4 className="order-list">{counter()}</h4>
                                                     <Card data={data} key={data.id}/>
                                                 </div>
                                             )

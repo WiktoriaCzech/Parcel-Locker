@@ -1,5 +1,5 @@
 import paczkus from "../img/Paczkus1.png"
-import logo from "../img/paczka1.png"
+import logo from "../img/paczka.png"
 import RecievePanel from "../getData/RecievePanel";
 import SendPanel from "../getData/SendPanel";
 import {useState} from "react";

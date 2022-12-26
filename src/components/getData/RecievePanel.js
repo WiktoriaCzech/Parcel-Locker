@@ -11,7 +11,9 @@ const packageList = getData();
 function RecievePanel () {
 
     const [orderData, setOrderData] = useState([]);
-    const [count, setCount] = useState(0);
+
+    let count =0;
+
     async function fetchOrderData (){
         const response = await fetch(
             'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + window.userInfo.phone);
@@ -20,9 +22,19 @@ function RecievePanel () {
         console.log(data);
         // console.log(window.userInfo.phone);
     }
+
     useEffect(() => {
         fetchOrderData();
     },[]);
+
+    function counter() {
+        count=count+1;
+        return(
+            <>
+                <h4 className="order">{count}</h4>
+            </>
+        )
+    }
 
     return(
         <>
@@ -49,7 +61,7 @@ function RecievePanel () {
                                 orderData.map((data) => {
                                     return (
                                         <div className="recieve-single-item">
-                                            <h4 className="order">{Object.keys(data).length}</h4>
+                                            <h4 className="order-list">{counter()}</h4>
                                             <Card data={data} key={data.id} />
                                         </div>
                                     )
