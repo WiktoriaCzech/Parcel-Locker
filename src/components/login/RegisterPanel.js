@@ -56,10 +56,10 @@ function RegisterPanel() {
     return(
         <div className="login-wrapper">
             <div className="background-wrapper">
-                <h1 style={{fontSize: "22px",color: "#fff",fontWeight: "400"}}>Rejestracja</h1>
+                <h1 style={{fontSize: "22px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px"}}>Rejestracja</h1>
                 <form onSubmit={handleSubmit}>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Imie*</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Imie*</span>
                         <input
                             type="text"
                             value={name}
@@ -70,7 +70,7 @@ function RegisterPanel() {
                         />
                     </label>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Nazwisko*</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Nazwisko*</span>
                         <input
                             type="text"
                             value={surname}
@@ -81,7 +81,7 @@ function RegisterPanel() {
                         />
                     </label>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Numer telefonu*</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu*</span>
                         <input
                             type="text"
                             value={phone}
@@ -92,7 +92,7 @@ function RegisterPanel() {
                         />
                     </label>
                     <label className="password-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Hasło*</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Hasło*</span>
                         <input
                             type="password"
                             value={password}
@@ -112,7 +112,7 @@ function RegisterPanel() {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9", fontFamily: "Montserrat", fontWeight: "400"}}>Posiadasz jednak konto ?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400"}}>Posiadasz jednak konto ?</h1>
                 <Link to="/login" className="register-link">Zaloguj się tutaj</Link>
             </div>
         </div>

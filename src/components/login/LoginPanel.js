@@ -58,10 +58,10 @@ const Login = () => {
     return(
         <div className="login-wrapper">
             <div className="background-wrapper">
-                <h1 style={{fontSize: "22px",color: "#fff",fontWeight: "400"}}>Zaloguj się :)</h1>
+                <h1 style={{fontSize: "22px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px"}}>Zaloguj się :)</h1>
                 <form onSubmit={handleSubmit}>
                     <label className="email-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Numer telefonu</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu</span>
                         <input
                             type="text"
                             placeholder="123 456 789"
@@ -70,7 +70,7 @@ const Login = () => {
                         />
                     </label>
                     <label className="password-wrapper">
-                        <span style={{color: "#95a5a9", marginBottom: "3px"}}>Hasło</span>
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Hasło</span>
                         <input
                             type="password"
                             placeholder="password"
@@ -88,7 +88,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "#95a5a9", fontFamily: "Montserrat", fontWeight: "400"}}>Brak konta ?</h1>
+                <h1 style={{fontSize: "14px", marginBottom: "8px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400"}}>Brak konta ?</h1>
                 <Link to="/register" className="register-link">Zarejestruj się tutaj</Link>
             </div>
         </div>

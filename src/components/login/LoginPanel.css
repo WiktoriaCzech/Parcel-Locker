@@ -1,6 +1,6 @@
 html {
-    background-color: #95a5a9;
-    background-image: url("../../components/img/background.png");
+    background-color: #D4D2D5;
+    background-image: url("../../components/img/background1.png");
 }
 .login-wrapper {
     display: grid;
@@ -10,10 +10,11 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 .background-wrapper {
-    background-color: #334756;
+    background-color: #BFAFA6;
     border-radius: 10px;
     padding: 20px;
     scale: 130%;
+    margin-top: -40px;
 }
 .email-wrapper {
     display: grid;
@@ -27,7 +28,7 @@ html {
     padding-bottom: 2%;
 }
 .login-button-wrapper {
-    background-color: #3f5955;
+    background-color: #606D5D;
     border-radius: 10px;
     width: 17rem;
     border: solid 1px transparent;
@@ -44,13 +45,14 @@ html {
 .register-link {
     text-decoration: none;
     cursor: pointer;
+    color: rgba(0,0,0,0.7);
 }
 .register-link:visited {
-    color: #fff;
+    color: rgba(0,0,0,0.7);
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px rgba(255,255,255,0.75) inset !important;
 }
