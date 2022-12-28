@@ -47,7 +47,7 @@ function SendPanel () {
     //display list of send packages
     async function fetchSendData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + window.userInfo.phone);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + window.userInfo.phoneNumber);
         const data = await response.json();
         setSendData(data);
         console.log(data);

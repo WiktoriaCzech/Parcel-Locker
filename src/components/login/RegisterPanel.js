@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import './LoginPanel.css';
 
 function RegisterPanel() {
-    const [phone, setPhone] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] =useState('');
     const [surname, setSurname] =useState('');
@@ -16,13 +16,13 @@ function RegisterPanel() {
     };
 
     async function register() {
-        if (phone.length === 9) {
+        if (phoneNumber.length === 9) {
             if (password.length >= 5) {
                 const result = await fetch(
                     'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/user',
                     {
                         method: 'POST',
-                        body: JSON.stringify({phone, name, surname, password}),
+                        body: JSON.stringify({phoneNumber, name, surname, password}),
                         headers: {
                             'Content-Type': 'application/json',
                             Accept: 'application/json',
@@ -84,9 +84,9 @@ function RegisterPanel() {
                         <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu*</span>
                         <input
                             type="text"
-                            value={phone}
+                            value={phoneNumber}
                             placeholder="123 456 789"
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
                             required
                         />

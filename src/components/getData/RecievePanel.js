@@ -16,11 +16,11 @@ function RecievePanel () {
 
     async function fetchOrderData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + window.userInfo.phone);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + window.userInfo.phoneNumber);
         const data = await response.json();
         setOrderData(data);
         console.log(data);
-        // console.log(window.userInfo.phone);
+        console.log(window.userInfo.phone);
     }
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function RecievePanel () {
                             <img src={recieveImg} alt="order label" />
                         </div>
                         <h1 className="list-header">Lista paczek do odbioru</h1>
-                        <select name="category" id="original" class="postform">
+                        <select name="category" id="original" className="postform">
                             <option value="-1">Sort by</option>
                             <option className="level-0" value="29">A-Z</option>
                             <option className="level-0" value="26">Z-A</option>

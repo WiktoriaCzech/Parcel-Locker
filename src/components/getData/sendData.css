@@ -134,3 +134,9 @@
 .choose-size {
     margin: 10px 0;
 }
+.locker option {
+    background-color: #BFAFA6;
+}
+.locker option:hover {
+    background-color: #BFAFA6;
+}

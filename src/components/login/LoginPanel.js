@@ -3,12 +3,12 @@ import {Link, useNavigate} from "react-router-dom";
 import './LoginPanel.css';
 
 window.userInfo = {
-    phone: "",
+    phoneNumber: "",
     accountType: "",
 }
 
 const Login = () => {
-    const [phone, setPhone] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Login = () => {
     };
 
     async function login() {
-        if (phone.length === 9) {
+        if (phoneNumber.length === 9) {
             if (password.length >= 5) {
                 const result = await fetch(
                     'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/login',
@@ -27,12 +27,12 @@ const Login = () => {
                             'Content-Type': 'application/json',
                             Accept: 'application/json',
                         },
-                        body: JSON.stringify({phone, password}),
+                        body: JSON.stringify({phoneNumber, password}),
                     });
                 const result2 = await result.json();
                 // console.log(result2);
                 window.userInfo = result2;
-                 // console.log(userInfo); // TEST CZY PRZEKAZYWANE DANE MOZNA GLOBALNIE PRZENIESC DO INNEGO PLIKU
+                //console.log(window.userInfo); // TEST CZY PRZEKAZYWANE DANE MOZNA GLOBALNIE PRZENIESC DO INNEGO PLIKU
                 if(result.status === 200) {
                     if(result2.accountType === "user")
                         navigate('/home-user');
@@ -44,6 +44,7 @@ const Login = () => {
                         }
                     }
                 }else {
+
                     navigate('/login');
                     alert("Niepoprawne dane logowania :(")
                 }
@@ -65,7 +66,7 @@ const Login = () => {
                         <input
                             type="text"
                             placeholder="123 456 789"
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
                         />
                     </label>
@@ -93,5 +94,10 @@ const Login = () => {
             </div>
         </div>
     )
+    // ): (
+    //     <div className="login-wrapper">
+    //
+    //     </div>
+    // )
 }
 export default Login;
