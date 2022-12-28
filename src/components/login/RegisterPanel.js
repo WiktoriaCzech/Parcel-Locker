@@ -8,6 +8,7 @@ function RegisterPanel() {
     const [password, setPassword] = useState('');
     const [name, setName] =useState('');
     const [surname, setSurname] =useState('');
+    const [email, setEmail] =useState('');
 
     const navigate = useNavigate();
 
@@ -18,30 +19,35 @@ function RegisterPanel() {
     async function register() {
         if (phoneNumber.length === 9) {
             if (password.length >= 5) {
-                const result = await fetch(
-                    'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/user',
-                    {
-                        method: 'POST',
-                        body: JSON.stringify({phoneNumber, name, surname, password}),
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Accept: 'application/json',
-                        },
-                    }
-                );
-                // const result2 = await result.json();
-                // console.log(result2);
-                if(result.status === 201) {
-                    alert("Pomyślnie zarejestrowano")
-                    navigate('/login');
-                }else {
-                    if (result.status === 400) {
-                        alert("Proszę sprawdzić poprawność danych!");
-                    }else{
-                        if( result.status === 409) {
-                        alert("Użytkownik o podanym numerze telefonu już istnieje!");
+                if(email.length >= 5 && email.includes('@')) {
+                    const result = await fetch(
+                        'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/user',
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({phoneNumber, name, surname, password, email}),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Accept: 'application/json',
+                            },
+                        }
+                    );
+                    // const result2 = await result.json();
+                    // console.log(result2);
+                    if(result.status === 201) {
+                        alert("Pomyślnie zarejestrowano")
+                        navigate('/login');
+                    }else {
+                        if (result.status === 400) {
+                            alert("Proszę sprawdzić poprawność danych!");
+                        }else{
+                            if( result.status === 409) {
+                                alert("Użytkownik o podanym numerze telefonu już istnieje!");
+                            }
                         }
                     }
+                }
+                else {
+                    alert('Email musi zawierać co najmniej 5 znaków, musi ponadto zawierać znak @');
                 }
             }
             else {
@@ -76,6 +82,17 @@ function RegisterPanel() {
                             value={surname}
                             placeholder="Kowalski"
                             onChange={(e) => setSurname(e.target.value)}
+                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
+                            required
+                        />
+                    </label>
+                    <label className="email-wrapper">
+                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Email*</span>
+                        <input
+                            type="text"
+                            value={email}
+                            placeholder="JanKowalski@example.com"
+                            onChange={(e) => setEmail(e.target.value)}
                             style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
                             required
                         />
