@@ -1,0 +1,38 @@
+.send-card {
+    display: flex;
+    flex-direction: row;
+    /*border: 1px solid var(--primary-color);*/
+    background-color: rgba(255,255,255, 0.08);
+    padding: 1rem 0.7rem;
+    margin: 13px 10px;
+    position: relative;
+    border-radius: 8px;
+    width: 38vw;
+}
+.package-list-container-send {
+    width: 40vw;
+    margin-left: 20px;
+    background-color: #AA968A;
+    min-height: 260px;
+    border-radius: 18px;
+    padding-bottom: 1px;
+    overflow-y: auto;
+}
+.card-odbiorca {
+    font-weight: 400;
+    text-align: center;
+    font-size: larger;
+    color: rgba(0,0,0,0.65);
+}
+.card-status {
+    font-weight: 400;
+    text-align: center;
+    font-size: larger;
+    color: rgba(0,0,0,0.65);
+    margin-left: 10vw;
+}
+.s {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: large;
+}

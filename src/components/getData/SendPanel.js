@@ -2,8 +2,12 @@ import sendImg from "../img/template1.png"
 import "./sendData.css";
 import "./recieveData.css";
 import {useState, useEffect} from "react";
-import Card from "./Card";
-import boxImg from"../img/paczka.png";
+import SendCard from "./CardForSender";
+import small from"../img/mala.png";
+import bigger from"../img/srednia.png";
+import big from"../img/duza.png";
+
+
 
 const { getData } = require("./db/db");
 const packageList = getData();
@@ -19,9 +23,10 @@ function SendPanel () {
     const [senderUser, setSenderUser] = useState('');
     const [receiverUser, setReceiverUser] = useState('');
     const [receiverMachine, setReceiverMachine] = useState('');
+    const [boxSize, setBoxSize] = useState('');
 
     async function sendForm() {
-        selectElement('chooseLockerForm', 'PDKP1');
+
         const result = await fetch (
             'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/order',
             {
@@ -30,11 +35,11 @@ function SendPanel () {
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
                 },
-                body: JSON.stringify({senderUser, receiverUser, receiverMachine}),
+                body: JSON.stringify({senderUser, receiverUser, receiverMachine, boxSize}),
             }
         );
         const result2 = await result.json();
-        console.log(result2);
+        // console.log(result2);
         if(result.status === 201) {
             alert("Dodano paczkę")
         }else {
@@ -65,11 +70,7 @@ function SendPanel () {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-    function selectElement(id, valueToSelect) {
-        let element = document.getElementById(id);
-        element.value = valueToSelect;
-        setReceiverMachine (element.value);
-    }
+
     function counter() {
         count=count+1;
         return(
@@ -90,30 +91,51 @@ function SendPanel () {
                             </button>
                         </div>
                         <form className="form-content" onSubmit={handleSubmit}>
-                            {/*<h4>Wybierz rozmiar przesyłki</h4>*/}
-                            {/*<label className="choose-size-package-wrapper">*/}
-                            {/*    <div className="form-card">*/}
-                            {/*        <div className="img-container">*/}
-                            {/*            <img src={boxImg} alt="box" />*/}
-                            {/*        </div>*/}
-                            {/*        <h6>13x23x20</h6>*/}
-                            {/*        <input className="choose-size" type="checkbox"/>*/}
-                            {/*    </div>*/}
-                            {/*    <div className="form-card">*/}
-                            {/*        <div className="img-container">*/}
-                            {/*            <img src={boxImg} alt="box" />*/}
-                            {/*        </div>*/}
-                            {/*        <h6>33x23x44</h6>*/}
-                            {/*        <input className="choose-size" type="checkbox"/>*/}
-                            {/*    </div>*/}
-                            {/*    <div className="form-card">*/}
-                            {/*        <div className="img-container">*/}
-                            {/*            <img src={boxImg} alt="box" />*/}
-                            {/*        </div>*/}
-                            {/*        <h6>5x13x7</h6>*/}
-                            {/*        <input className="choose-size" type="checkbox"/>*/}
-                            {/*    </div>*/}
-                            {/*</label>*/}
+                            <h4>Wybierz rozmiar przesyłki</h4>
+                            <label className="choose-size-package-wrapper">
+                                <div className="form-card">
+                                    <h4>Mniejsza</h4>
+                                    <div className="img-container">
+                                        <img src={small} alt="box" />
+                                    </div>
+                                    <h6>max.</h6>
+                                    <h6>15x16x17</h6>
+                                    <input
+                                        id="choose-size-small"
+                                        name="package-size"
+                                        className="choose-size"
+                                        type="radio"
+                                        value="smaller"
+                                        checked
+                                        onChange={(e) => setBoxSize(e.target.value)}
+                                    />
+                                </div>
+                                <div className="form-card">
+                                    <h4>Większa</h4>
+                                    <div className="img-container">
+                                        <img src={bigger} alt="box" />
+                                    </div>
+                                    <h6>max.</h6>
+                                    <h6>15x22x17</h6>
+                                    <input
+                                        id="choose-size-big"
+                                        name="package-size"
+                                        className="choose-size"
+                                        type="radio"
+                                        value="bigger"
+                                        onChange={(e) => setBoxSize(e.target.value)}
+                                    />
+                                </div>
+                                <div className="form-card-inactive">
+                                    <h4>Największa</h4>
+                                    <div className="img-container">
+                                        <img src={big} alt="box" />
+                                    </div>
+                                    <h6>max.</h6>
+                                    <h6>53x34x44</h6>
+                                    <h5>Ten rozmiar aktualnie <br/>nie jest dostępny.</h5>
+                                </div>
+                            </label>
                             <h4>Aby nadać paczkę wypełnij poniższe pola</h4>
                             <label className="sender-field-form">
                                 <span className="form-text">Numer telefonu nadawcy: </span>
@@ -139,6 +161,8 @@ function SendPanel () {
                             <label className="choose-locker">
                                 <span className="form-text">Paczkomat: </span>
                                 <select name="category" id="chooseLockerForm" className="locker">
+                                    value={receiverMachine}
+                                    onChange={e => setReceiverMachine(e.target.value)}>
                                     <option value="-1">Wybierz paczkomat</option>
                                     <option className="level-1" value="PDKP1">PDKP1</option>
                                 </select>
@@ -156,10 +180,10 @@ function SendPanel () {
                     </div>
                 ) : (
                     <>
-                        <div className="wrapper-list">
-                            <div className="package-list-container">
+                        <div className="wrapper-list-send">
+                            <div className="package-list-container-send">
                                 <div className="recieve-header">
-                                    <div className="image_container">
+                                    <div className="image_container_send">
                                         <img src={sendImg} alt="send label"/>
                                     </div>
                                     <h1 className="list-header-send">Lista nadanych paczek </h1>
@@ -174,16 +198,16 @@ function SendPanel () {
                                     </select>
                                 </div>
                                 {
-                                    JSON.stringify(packageList) === '[]' ? (
+                                    JSON.stringify(sendData) === '[]' ? (
                                         <div className="none-to-pick-up-response">
                                             <h2>Nie masz nadanych paczek.</h2>
                                         </div>
                                     ) : (
-                                        packageList.map((data) => {
+                                        sendData.map((data) => {
                                             return (
                                                 <div className="recieve-single-item">
                                                     <h4 className="order-list">{counter()}</h4>
-                                                    <Card data={data} key={data.id}/>
+                                                    <SendCard data={data} key={data.id}/>
                                                 </div>
                                             )
                                         })
