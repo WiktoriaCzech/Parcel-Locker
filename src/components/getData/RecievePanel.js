@@ -20,7 +20,7 @@ function RecievePanel () {
         const data = await response.json();
         setOrderData(data);
         console.log(data);
-        console.log(window.userInfo.phone);
+        console.log(window.userInfo.phoneNumber);
     }
 
     useEffect(() => {
