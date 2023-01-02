@@ -10,6 +10,13 @@ function RegisterPanel() {
     const [surname, setSurname] =useState('');
     const [email, setEmail] =useState('');
 
+    const [country, setCountry] =useState('');
+    const [province, setProvince] =useState('');
+    const [town, setTown] =useState('');
+    const [postalCode, setPostalCode] =useState('');
+    const [street, setStreet] =useState('');
+    const [addressNumber, setAddressNumber] =useState('');
+
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -24,7 +31,8 @@ function RegisterPanel() {
                         'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/create/user',
                         {
                             method: 'POST',
-                            body: JSON.stringify({phoneNumber, name, surname, password, email}),
+                            body: JSON.stringify({phoneNumber, name, surname, password, email,
+                                                        country, province, town, postalCode, street, addressNumber}),
                             headers: {
                                 'Content-Type': 'application/json',
                                 Accept: 'application/json',
@@ -62,63 +70,130 @@ function RegisterPanel() {
     return(
         <div className="login-wrapper">
             <div className="background-wrapper">
-                <h1 style={{fontSize: "22px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px"}}>Rejestracja</h1>
+                <h1 style={{fontSize: "24px",color: "rgba(0,0,0,0.7)",fontWeight: "400", }}>Rejestracja</h1>
                 <form onSubmit={handleSubmit}>
-                    <label className="email-wrapper">
-                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Imie*</span>
-                        <input
-                            type="text"
-                            value={name}
-                            placeholder="Jan"
-                            onChange={(e) => setName(e.target.value)}
-                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
-                            required
-                        />
-                    </label>
-                    <label className="email-wrapper">
-                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Nazwisko*</span>
-                        <input
-                            type="text"
-                            value={surname}
-                            placeholder="Kowalski"
-                            onChange={(e) => setSurname(e.target.value)}
-                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
-                            required
-                        />
-                    </label>
-                    <label className="email-wrapper">
-                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Email*</span>
-                        <input
-                            type="text"
-                            value={email}
-                            placeholder="JanKowalski@example.com"
-                            onChange={(e) => setEmail(e.target.value)}
-                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
-                            required
-                        />
-                    </label>
-                    <label className="email-wrapper">
-                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu*</span>
-                        <input
-                            type="text"
-                            value={phoneNumber}
-                            placeholder="123 456 789"
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
-                            required
-                        />
-                    </label>
-                    <label className="password-wrapper">
-                        <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Hasło*</span>
-                        <input
-                            type="password"
-                            value={password}
-                            placeholder="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            style={{borderRadius: "3px", border: "1px solid white", height: "30px"}}
-                            required
-                        />
-                    </label>
+                    <h1 style={{fontSize: "14px", marginBottom: "8px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400", marginLeft: "230px"}}>Informacje adresowe:</h1>
+                    <div className="register-layout-wrapper">
+                        <div className="required-items-wrapper">
+                            <label className="required-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Imie</span>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    placeholder="Jan"
+                                    onChange={(e) => setName(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                    required
+                                />
+                            </label>
+                            <label className="required-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Nazwisko</span>
+                                <input
+                                    type="text"
+                                    value={surname}
+                                    placeholder="Kowalski"
+                                    onChange={(e) => setSurname(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                    required
+                                />
+                            </label>
+                            <label className="required-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Email</span>
+                                <input
+                                    type="text"
+                                    value={email}
+                                    placeholder="JanKowalski@example.com"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                    required
+                                />
+                            </label>
+                            <label className="required-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu</span>
+                                <input
+                                    type="text"
+                                    value={phoneNumber}
+                                    placeholder="123 456 789"
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                    required
+                                />
+                            </label>
+                            <label className="password-wrapper">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Hasło</span>
+                                <input
+                                    type="password"
+                                    value={password}
+                                    placeholder="password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <div className="adress-info">
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Kraj</span>
+                                <input
+                                    type="text"
+                                    value={country}
+                                    placeholder="Polska"
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Województwo</span>
+                                <input
+                                    type="text"
+                                    value={province}
+                                    placeholder="Podkarpackie"
+                                    onChange={(e) => setProvince(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Miasto</span>
+                                <input
+                                    type="text"
+                                    value={town}
+                                    placeholder="Rzeszów"
+                                    onChange={(e) => setTown(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Kod pocztowy</span>
+                                <input
+                                    type="text"
+                                    value={postalCode}
+                                    placeholder="35-082"
+                                    onChange={(e) => setPostalCode(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Ulica</span>
+                                <input
+                                    type="text"
+                                    value={street}
+                                    placeholder="Grzybek"
+                                    onChange={(e) => setStreet(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                            <label className="adress-items">
+                                <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer</span>
+                                <input
+                                    type="text"
+                                    value={addressNumber}
+                                    placeholder="2"
+                                    onChange={(e) => setAddressNumber(e.target.value)}
+                                    style={{borderRadius: "3px", border: "1px solid white", height: "30px", width:'200px'}}
+                                />
+                            </label>
+                        </div>
+                    </div>
                     <div>
                         <button
                             className="login-button-wrapper"
