@@ -17,6 +17,7 @@
 }
 .image_container img {
     width: 100%;
+    z-index: 1000;
 }
 .recieve-header{
     display: flex;
@@ -47,7 +48,7 @@
     width: 55vw;
     position: sticky;
     bottom: 0;
-    z-index: 1000;
+    z-index: 999;
     background-color: #AA968A;
     border-radius: 0 0 18px 18px;
     padding-top: 8px;

@@ -1,7 +1,7 @@
 import sendImg from "../img/template1.png"
 import "./sendData.css";
 import "./recieveData.css";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useMemo} from "react";
 import SendCard from "./CardForSender";
 import small from"../img/mala.png";
 import bigger from"../img/srednia.png";
@@ -14,12 +14,14 @@ const packageList = getData();
 
 function SendPanel () {
 
+    //display package info
     const [switchPanel,setSwitchPanel] = useState(true); //switch button state
-    const [sendData, setSendData] = useState([]); //get req to display list
+    const [sendData, setSendData] = useState([]); //all send data from DB
+    const [sortOption, setSortOption] = useState(); //status category selected
 
     let count = 0;
 
-    //POST form request
+    //order package pickup info
     const [senderUser, setSenderUser] = useState('');
     const [receiverUser, setReceiverUser] = useState('');
     const [receiverMachine, setReceiverMachine] = useState('');
@@ -78,6 +80,19 @@ function SendPanel () {
                 <h4 className="order">{count}</h4>
             </>
         )
+    }
+    function getFilteredData() {
+        if(!sortOption){
+            return sendData;
+        }
+        return sendData.filter((data) => data.status === sortOption);
+    }
+
+    //prevent repetive multiple function calls
+    var filteredData = useMemo(getFilteredData, [sortOption, sendData]);
+
+    function handleCategoryChange(event) {
+        setSortOption(event.target.value);
     }
     return (
         <div className="send-site-wrapper">
@@ -190,11 +205,13 @@ function SendPanel () {
                                     <button className="switch" type="primary" onClick={showOpposite}>
                                         Nadaj paczkę
                                     </button>
-                                    <select name="category" id="original" className="postform">
-                                        <option value="-1">Sort by</option>
-                                        <option className="level-0" value="29">A-Z</option>
-                                        <option className="level-0" value="26">Z-A</option>
-                                        <option className="level-0" value="23">Date</option>
+                                    <select name="category" id="original" className="postform"
+                                            onChange={handleCategoryChange}>
+                                        <option value="">Sort by</option>
+                                        <option className="level-0" value="received">Dostarczono</option>
+                                        <option className="level-0" value="picked">Odebrano</option>
+                                        <option className="level-0" value="inserted">Nadano</option>
+                                        <option className="level-0" value="ordered">Zamówiono</option>
                                     </select>
                                 </div>
                                 {
@@ -203,7 +220,7 @@ function SendPanel () {
                                             <h2>Nie masz nadanych paczek.</h2>
                                         </div>
                                     ) : (
-                                        sendData.map((data) => {
+                                        filteredData.map((data) => {
                                             return (
                                                 <div className="recieve-single-item">
                                                     <h4 className="order-list">{counter()}</h4>

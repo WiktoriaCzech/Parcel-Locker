@@ -1,7 +1,7 @@
 import recieveImg from "../img/template2.png"
 import "./recieveData.css";
 import Card from "./Card";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 
 
@@ -11,6 +11,7 @@ const packageList = getData();
 function RecievePanel () {
 
     const [orderData, setOrderData] = useState([]);
+    const [sortOption, setSortOption] = useState(); //status category selected
 
     let count =0;
 
@@ -35,6 +36,19 @@ function RecievePanel () {
             </>
         )
     }
+    function getFilteredData() {
+        if(!sortOption){
+            return orderData;
+        }
+        return orderData.filter((data) => data.status === sortOption);
+    }
+
+    //prevent repetive multiple function calls
+    var filteredData = useMemo(getFilteredData, [sortOption, orderData]);
+
+    function handleCategoryChange(event) {
+        setSortOption(event.target.value);
+    }
 
     return(
         <>
@@ -45,11 +59,13 @@ function RecievePanel () {
                             <img src={recieveImg} alt="order label" />
                         </div>
                         <h1 className="list-header">Lista paczek do odbioru</h1>
-                        <select name="category" id="original" className="postform">
-                            <option value="-1">Sort by</option>
-                            <option className="level-0" value="29">A-Z</option>
-                            <option className="level-0" value="26">Z-A</option>
-                            <option className="level-0" value="23">Date</option>
+                        <select name="category" id="original" className="postform"
+                            onChange={handleCategoryChange}>
+                            <option value="">Sort by</option>
+                            <option className="level-0" value="received">Dostarczono</option>
+                            <option className="level-0" value="picked">Odebrano</option>
+                            <option className="level-0" value="inserted">Nadano</option>
+                            <option className="level-0" value="ordered">Zamówiono</option>
                         </select>
                     </div>
                         {
@@ -58,7 +74,7 @@ function RecievePanel () {
                                     <h2>Brak paczek do odbioru.</h2>
                                 </div>
                             ) : (
-                                orderData.map((data) => {
+                                filteredData.map((data) => {
                                     return (
                                         <div className="recieve-single-item">
                                             <h4 className="order-list">{counter()}</h4>
