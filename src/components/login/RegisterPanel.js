@@ -70,9 +70,8 @@ function RegisterPanel() {
     return(
         <div className="login-wrapper">
             <div className="background-wrapper">
-                <h1 style={{fontSize: "24px",color: "rgba(0,0,0,0.7)",fontWeight: "400", }}>Rejestracja</h1>
+                <h1 style={{fontSize: "24px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px" }}>Rejestracja</h1>
                 <form onSubmit={handleSubmit}>
-                    <h1 style={{fontSize: "14px", marginBottom: "8px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400", marginLeft: "230px"}}>Informacje adresowe:</h1>
                     <div className="register-layout-wrapper">
                         <div className="required-items-wrapper">
                             <label className="required-items">
@@ -130,6 +129,9 @@ function RegisterPanel() {
                                     required
                                 />
                             </label>
+                            <h1 style={{fontSize: "12px", marginTop: "45px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400"}}>
+                                Pola oznaczone * są wymagane</h1>
+
                         </div>
                         <div className="adress-info">
                             <label className="adress-items">
