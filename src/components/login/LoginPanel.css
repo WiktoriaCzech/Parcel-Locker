@@ -77,3 +77,6 @@ input:-webkit-autofill:active{
 .required-items-wrapper {
     margin-right: 30px;
 }
+.none {
+    display: none;
+}

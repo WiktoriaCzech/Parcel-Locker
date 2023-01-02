@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import LoadingSpinner from "../Spinner/SpinnerAnimation";
 import './LoginPanel.css';
 
 window.userInfo = {
@@ -12,6 +13,9 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    //update the loading state
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -19,6 +23,7 @@ const Login = () => {
     async function login() {
         if (phoneNumber.length === 9) {
             if (password.length >= 5) {
+                setIsLoading(true);
                 const result = await fetch(
                     'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/login',
                     {
@@ -34,6 +39,7 @@ const Login = () => {
                 window.userInfo = result2;
                 //console.log(window.userInfo); // TEST CZY PRZEKAZYWANE DANE MOZNA GLOBALNIE PRZENIESC DO INNEGO PLIKU
                 if(result.status === 200) {
+                    setIsLoading(false);
                     if(result2.accountType === "user")
                         navigate('/home-user');
                     else{
@@ -44,7 +50,7 @@ const Login = () => {
                         }
                     }
                 }else {
-
+                    setIsLoading(false);
                     navigate('/login');
                     alert("Niepoprawne dane logowania :(")
                 }
@@ -58,10 +64,11 @@ const Login = () => {
 
     return(
         <div className="login-wrapper">
+            {isLoading ? <LoadingSpinner /> :
             <div className="background-wrapper">
                 <h1 style={{fontSize: "22px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px"}}>Zaloguj się :)</h1>
                 <form onSubmit={handleSubmit}>
-                    <label className="email-wrapper">
+                    <label className="required-items">
                         <span style={{color: "rgba(0,0,0,0.6)", marginBottom: "3px"}}>Numer telefonu</span>
                         <input
                             type="text"
@@ -84,6 +91,7 @@ const Login = () => {
                             className="login-button-wrapper"
                             type="button"
                             onClick={login}
+                            disabled={isLoading}
                         >
                             Zaloguj
                         </button>
@@ -92,12 +100,8 @@ const Login = () => {
                 <h1 style={{fontSize: "14px", marginBottom: "8px",color: "rgba(0,0,0,0.6)", fontFamily: "Montserrat", fontWeight: "400"}}>Brak konta ?</h1>
                 <Link to="/register" className="register-link">Zarejestruj się tutaj</Link>
             </div>
+            }
         </div>
     )
-    // ): (
-    //     <div className="login-wrapper">
-    //
-    //     </div>
-    // )
 }
 export default Login;
