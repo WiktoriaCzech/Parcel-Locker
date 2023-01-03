@@ -47,12 +47,22 @@ function MainDeliverPanel () {
             </>
         )
     }
+    const handleLogout = () => {
+        localStorage.removeItem('user-info');
+        return (
+            window.location="/login"
+        )
+    }
 
     return(
         <div className="delivery">
             <div className="greetings-with-logo">
-                <img src={logo} alt="Logo firmy" className="logo-img"/>
+                <div className="logo-at-left-side" >
+                    <img src={logo} alt="Logo firmy" className="logo-img"/>
+                    <h1 className="logo-title">Paczkuś sp. z.o.o</h1>
+                </div>
                 <h1 className="greetings">Dzień Dobry, miłego dnia ! :)</h1>
+                <button className="logout-button-deliveryMan" type="primary" onClick={handleLogout}>Wyloguj się</button>
             </div>
             <div className="delivery-site-wrapper">
                 <div className="box-wrapper">

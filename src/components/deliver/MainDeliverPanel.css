@@ -7,18 +7,38 @@
 .greetings-with-logo {
     grid-area: title;
     display: flex;
+    justify-content: space-between;
 }
 .greetings {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 36px;
     color: rgba(0,0,0,0.75);
-    margin: 30px 0 50px 0;
+    margin: 30px 0 50px -100px;
 }
 .logo-img {
     margin-top: 10px;
     width: 90px;
     height: 90px;
+}
+.logout-button-deliveryMan {
+    font-family: 'Montserrat', sans-serif;
+    margin: 35px 20px 0 0;
+    padding: 0 25px;
+    float: right;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    background-color: #334441;
+    font-weight: 400;
+    font-style: normal;
+    height: 35px;
+    cursor: pointer;
+}
+.logout-button-deliveryMan:hover {
+    background-color: #606D5D;
 }
 .delivery-site-wrapper {
     grid-area: main;
@@ -31,14 +51,14 @@
     flex-basis: 50%;
     background-color: #AA968A;
     border-radius: 8px;
-    margin: 0 20px 0 10px;
+    margin: 0 20px 0 20px;
 
 }
 .pickup-wrapper {
     flex-basis: 50%;
     background-color: #AA968A;
     border-radius: 8px;
-    margin: 0 10px 0 20px;
+    margin: 0 20px 0 20px;
 }
 .delivery-header {
     font-family: 'Montserrat', sans-serif;
