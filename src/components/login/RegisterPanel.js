@@ -68,7 +68,7 @@ function RegisterPanel() {
     }
 
     return(
-        <div className="login-wrapper">
+        <div className="register-wrapper">
             <div className="background-wrapper">
                 <h1 style={{fontSize: "24px",color: "rgba(0,0,0,0.7)",fontWeight: "400", marginBottom: "8px" }}>Rejestracja</h1>
                 <form onSubmit={handleSubmit}>
@@ -198,7 +198,7 @@ function RegisterPanel() {
                     </div>
                     <div>
                         <button
-                            className="login-button-wrapper"
+                            className="register-button-wrapper"
                             type="button"
                             onClick={register}
                         >
