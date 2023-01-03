@@ -5,8 +5,8 @@ import {useEffect, useMemo, useState} from "react";
 
 
 
-const { getData } = require("./db/db");
-const packageList = getData();
+// const { getData } = require("./db/db");
+// const packageList = getData();
 
 function RecievePanel () {
 
@@ -74,14 +74,18 @@ function RecievePanel () {
                                     <h2>Brak paczek do odbioru.</h2>
                                 </div>
                             ) : (
-                                filteredData.map((data) => {
-                                    return (
-                                        <div className="recieve-single-item">
-                                            <h4 className="order-list">{counter()}</h4>
-                                            <Card data={data} key={data.id} />
-                                        </div>
-                                    )
-                                })
+                                filteredData.length === 0 ? (
+                                    <h1 className="recieve-filter-response">Nie ma paczek spełniających kryteria</h1>
+                                ) : (
+                                    filteredData.map((data) => {
+                                        return (
+                                            <div className="recieve-single-item">
+                                                <h4 className="order-list">{counter()}</h4>
+                                                <Card data={data} key={data.id}/>
+                                            </div>
+                                        )
+                                    })
+                                )
                             )
                         }
                     <div className="pagination">

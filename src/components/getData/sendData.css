@@ -203,3 +203,10 @@
     display: flex;
     margin-left: 165px;
 }
+.filter-response {
+    color: rgba(0,0,0,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 70px 0 0 180px;
+}

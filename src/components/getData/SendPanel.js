@@ -9,8 +9,8 @@ import big from"../img/duza.png";
 
 
 
-const { getData } = require("./db/db");
-const packageList = getData();
+// const { getData } = require("./db/db");
+// const packageList = getData();
 
 function SendPanel () {
 
@@ -40,7 +40,7 @@ function SendPanel () {
                 body: JSON.stringify({senderUser, receiverUser, receiverMachine, boxSize}),
             }
         );
-        const result2 = await result.json();
+        // const result2 = await result.json();
         // console.log(result2);
         if(result.status === 201) {
             alert("Dodano paczkę")
@@ -220,14 +220,18 @@ function SendPanel () {
                                             <h2>Nie masz nadanych paczek.</h2>
                                         </div>
                                     ) : (
-                                        filteredData.map((data) => {
-                                            return (
-                                                <div className="recieve-single-item">
-                                                    <h4 className="order-list">{counter()}</h4>
-                                                    <SendCard data={data} key={data.id}/>
-                                                </div>
-                                            )
-                                        })
+                                        filteredData.length === 0 ? (
+                                            <h1 className="filter-response">Nie ma paczek spełniających kryteria</h1>
+                                        ) : (
+                                            filteredData.map((data) => {
+                                                return (
+                                                    <div className="recieve-single-item">
+                                                        <h4 className="order-list">{counter()}</h4>
+                                                        <SendCard data={data} key={data.id}/>
+                                                    </div>
+                                                )
+                                            })
+                                        )
                                     )
                                 }
                             </div>
