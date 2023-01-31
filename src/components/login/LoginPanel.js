@@ -2,11 +2,7 @@ import {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import LoadingSpinner from "../Spinner/SpinnerAnimation";
 import './LoginPanel.css';
-
-window.userInfo = {
-    phoneNumber: "",
-    accountType: "",
-}
+import axios from 'axios';
 
 const Login = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -19,6 +15,14 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+
+    const setAuthToken = token => {
+        if(token) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
+        else
+            delete axios.defaults.headers.common["Authorization"];
+    }
 
     async function login() {
         if (phoneNumber.length === 9) {
@@ -35,9 +39,20 @@ const Login = () => {
                         body: JSON.stringify({phoneNumber, password}),
                     });
                 const result2 = await result.json();
-                // console.log(result2);
-                window.userInfo = result2;
-                //console.log(window.userInfo); // TEST CZY PRZEKAZYWANE DANE MOZNA GLOBALNIE PRZENIESC DO INNEGO PLIKU
+                //get token from response
+                const token = result2.token;
+                //set JWT token to local
+                localStorage.setItem("token", token);
+                //set authorization token
+                setAuthToken(token);
+
+                const loginInfo = result2.phoneNumber;
+                const account = result2.accountType;
+                localStorage.setItem("phoneNumber", loginInfo);
+                localStorage.setItem("accountType", account);
+
+               //  window.userInfo = result2;
+
                 if(result.status === 200) {
                     setIsLoading(false);
                     if(result2.accountType === "user")

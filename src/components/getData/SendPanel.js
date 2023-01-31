@@ -7,8 +7,6 @@ import small from"../img/mala.png";
 import bigger from"../img/srednia.png";
 import big from"../img/duza.png";
 
-
-
 // const { getData } = require("./db/db");
 // const packageList = getData();
 
@@ -54,10 +52,10 @@ function SendPanel () {
     //display list of send packages
     async function fetchSendData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + window.userInfo.phoneNumber);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + localStorage.phoneNumber);
         const data = await response.json();
         setSendData(data);
-        console.log(data);
+        // console.log(data);
         // console.log(window.userInfo.phone);
     }
 

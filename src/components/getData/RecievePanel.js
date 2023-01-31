@@ -17,11 +17,11 @@ function RecievePanel () {
 
     async function fetchOrderData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + window.userInfo.phoneNumber);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + localStorage.phoneNumber);
         const data = await response.json();
         setOrderData(data);
-        console.log(data);
-        console.log(window.userInfo.phoneNumber);
+        // console.log(data);
+        // console.log(window.userInfo.phoneNumber);
     }
 
     useEffect(() => {
