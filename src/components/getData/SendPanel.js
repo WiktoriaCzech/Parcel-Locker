@@ -23,7 +23,7 @@ function SendPanel () {
     const [senderUser, setSenderUser] = useState('');
     const [receiverUser, setReceiverUser] = useState('');
     const [receiverMachine, setReceiverMachine] = useState('');
-    const [boxSize, setBoxSize] = useState('');
+    const [size, setSize] = useState('smaller');
 
     async function sendForm() {
 
@@ -32,10 +32,11 @@ function SendPanel () {
             {
                 method: 'POST',
                 headers: {
+                    "Authorization" : `Bearer ${localStorage.token}`,
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
                 },
-                body: JSON.stringify({senderUser, receiverUser, receiverMachine, boxSize}),
+                body: JSON.stringify({senderUser, receiverUser, receiverMachine, size}),
             }
         );
         // const result2 = await result.json();
@@ -52,7 +53,9 @@ function SendPanel () {
     //display list of send packages
     async function fetchSendData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + localStorage.phoneNumber);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/sending/' + localStorage.phoneNumber,{
+                headers: {"Authorization" : `Bearer ${localStorage.token}`}
+            });
         const data = await response.json();
         setSendData(data);
         // console.log(data);
@@ -120,7 +123,7 @@ function SendPanel () {
                                         type="radio"
                                         value="smaller"
                                         checked
-                                        onChange={(e) => setBoxSize(e.target.value)}
+                                        onChange={(e) => setSize(e.target.value)}
                                     />
                                 </div>
                                 <div className="form-card">
@@ -136,7 +139,7 @@ function SendPanel () {
                                         className="choose-size"
                                         type="radio"
                                         value="bigger"
-                                        onChange={(e) => setBoxSize(e.target.value)}
+                                        onChange={(e) => setSize(e.target.value)}
                                     />
                                 </div>
                                 <div className="form-card-inactive">
@@ -173,7 +176,7 @@ function SendPanel () {
                             <h4>Wybierz paczkomat, do którego mamy nadać paczkę.</h4>
                             <label className="choose-locker">
                                 <span className="form-text">Paczkomat: </span>
-                                <select name="category" id="chooseLockerForm" className="locker">
+                                <select name="category" id="chooseLockerForm" className="locker"
                                     value={receiverMachine}
                                     onChange={e => setReceiverMachine(e.target.value)}>
                                     <option value="-1">Wybierz paczkomat</option>

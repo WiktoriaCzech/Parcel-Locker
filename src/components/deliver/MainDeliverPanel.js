@@ -16,14 +16,18 @@ function MainDeliverPanel () {
 
     async function fetchDeliverData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/delivering');
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/delivering', {
+                headers: {"Authorization" : `Bearer ${localStorage.token}`}
+            });
         const data = await response.json();
             setDeliverData(data);
         // console.log(data);
     }
     async function fetchPickupData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/picking');
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/picking', {
+                headers: {"Authorization" : `Bearer ${localStorage.token}`}
+            });
         const data2 = await response.json();
         setPickupData(data2);
         // console.log(data2);

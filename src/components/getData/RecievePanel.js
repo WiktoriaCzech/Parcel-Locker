@@ -17,7 +17,9 @@ function RecievePanel () {
 
     async function fetchOrderData (){
         const response = await fetch(
-            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + localStorage.phoneNumber);
+            'https://paczkomatdatabaseapi.azurewebsites.net/api/paczkomat/orders/receiving/' + localStorage.phoneNumber,{
+                headers: {"Authorization" : `Bearer ${localStorage.token}`}
+            });
         const data = await response.json();
         setOrderData(data);
         // console.log(data);
