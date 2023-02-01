@@ -3,10 +3,11 @@ import logo from "../img/paczka.png";
 import admin from "../img/admin1.png";
 import SendPanel from "../getData/SendPanel";
 import RecievePanel from "../getData/RecievePanel";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 function MainAdminPanel () {
 
+    const navigate = useNavigate();
     const [sendPanel, setSendPanel] = useState(false);
     const [recievePanel, setRecievePanel] = useState(false);
 
@@ -39,9 +40,7 @@ function MainAdminPanel () {
         localStorage.removeItem('accountType')
         localStorage.removeItem('phoneNumber');
         localStorage.removeItem('token');
-        return (
-            window.location="/login"
-        )
+        return navigate('/login')
     }
     return(
         <div className="site-wrapper">{

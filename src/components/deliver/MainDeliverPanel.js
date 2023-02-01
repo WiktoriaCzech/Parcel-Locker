@@ -4,10 +4,11 @@ import DeliveryCard from "./DeliveryCard";
 import PickupCard from "./PickupCard";
 import logo from "../img/paczka.png";
 import kurier from "../img/kurier1.png";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 function MainDeliverPanel () {
 
+    const navigate = useNavigate();
     const [deliverData, setDeliverData] = useState([]);
     const [pickupData, setPickupData] = useState([]);
 
@@ -58,9 +59,7 @@ function MainDeliverPanel () {
         localStorage.removeItem('accountType')
         localStorage.removeItem('phoneNumber');
         localStorage.removeItem('token');
-        return (
-            window.location="/login"
-        )
+        return navigate('/login')
     }
 
     return(

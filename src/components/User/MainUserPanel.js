@@ -4,10 +4,11 @@ import RecievePanel from "../getData/RecievePanel";
 import SendPanel from "../getData/SendPanel";
 import React, {useState} from "react";
 import "../User/MainUserPanel.css";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate,} from "react-router-dom";
 
 function MainUserPanel () {
 
+    const navigate = useNavigate();
     const [sendPanel, setSendPanel] = useState(false);
     const [recievePanel, setRecievePanel] = useState(false);
 
@@ -40,9 +41,8 @@ function MainUserPanel () {
         localStorage.removeItem('accountType')
         localStorage.removeItem('phoneNumber');
         localStorage.removeItem('token');
-        return (
-            window.location="/login"
-        )
+        return navigate('/login')
+
     }
 
     return (
