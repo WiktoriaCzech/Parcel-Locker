@@ -10,12 +10,12 @@ function RegisterPanel() {
     const [surname, setSurname] =useState('');
     const [email, setEmail] =useState('');
 
-    const [country, setCountry] =useState('');
-    const [province, setProvince] =useState('');
-    const [town, setTown] =useState('');
-    const [postalCode, setPostalCode] =useState('');
-    const [street, setStreet] =useState('');
-    const [addressNumber, setAddressNumber] =useState('');
+    const [country, setCountry] =useState();
+    const [province, setProvince] =useState();
+    const [town, setTown] =useState();
+    const [postalCode, setPostalCode] =useState();
+    const [street, setStreet] =useState();
+    const [addressNumber, setAddressNumber] =useState();
 
     const navigate = useNavigate();
 
