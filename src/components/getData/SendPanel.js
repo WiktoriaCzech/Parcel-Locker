@@ -58,7 +58,7 @@ function SendPanel () {
             });
         const data = await response.json();
         setSendData(data);
-        // console.log(data);
+        console.log(data);
         // console.log(window.userInfo.phone);
     }
 
@@ -196,10 +196,10 @@ function SendPanel () {
                     </div>
                 ) : (
                     <>
-                        <div className="wrapper-list-send">
-                            <div className="package-list-container-send">
+                        <div className="wrapper-list">
+                            <div className="package-list-container">
                                 <div className="recieve-header">
-                                    <div className="image_container_send">
+                                    <div className="image_container">
                                         <img src={sendImg} alt="send label"/>
                                     </div>
                                     <h1 className="list-header-send">Lista nadanych paczek </h1>
